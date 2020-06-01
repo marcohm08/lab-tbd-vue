@@ -9,8 +9,8 @@
       <table class="table table-fixed">
         <thead>
           <tr>
+            <th class="col-xs-3">ID</th>
             <th class="col-xs-3">Nombre</th>
-            <th class="col-xs-3">Last Name</th>
           </tr>
         </thead>
         <tbody>
