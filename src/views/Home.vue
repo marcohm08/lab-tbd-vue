@@ -1,27 +1,22 @@
 <template>
-  <div class=" container mt-5">
-    <h2 class="mb-3">Busqueda de voluntario segun emergencia </h2>
-    <div class="row mx-5 my-3">
-      <input type="text" placeholder="Ingrese nombre de la emergencia" class="form-control mx-3" style="width: 50%" v-model="nombreEmergencia">
-      <button class="btn btn-primary" @click="obtenerVoluntarios(nombreEmergencia)">Buscar</button>
-    </div>
-    <div v-if="voluntarios.length != 0">
-      <table class="table table-fixed">
-        <thead>
-          <tr>
-            <th class="col-xs-3">ID</th>
-            <th class="col-xs-3">Nombre</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(voluntario,index) in voluntarios" :key="index">
-            <td class="col-xs-3">{{voluntario.id}}</td>
-            <td class="col-xs-3">{{voluntario.nombre}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class=" container mt-5">
+  <h1>
+    Bienvenidos
+  </h1>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus a dolores optio, dolorem architecto natus ullam aliquid exercitationem! Suscipit, voluptate enim nesciunt cumque ipsum eos? Et eaque laudantium molestias. Quaerat?
+  </p>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae fugiat tempora tenetur numquam, perspiciatis reprehenderit maxime quia magni. Ullam non excepturi distinctio quo ex cupiditate ipsa delectus? Fuga, molestiae necessitatibus?
+  </p>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis repellendus officiis, expedita ut, hic magni aliquam excepturi modi aut quaerat possimus aperiam nesciunt a asperiores magnam. At aperiam nesciunt saepe!
+  </p>
+
+</div>
+
 </template>
 
 <script>
