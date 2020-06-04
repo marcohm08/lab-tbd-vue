@@ -19,9 +19,9 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
     {
-      path: '/voluntario/habilidad',
-      name: 'VoluntarioHabilidad',
-      component: () => import(/* webpackChunkName: "about" */ '../views/VoluntarioHabilidad.vue')
+      path: '/vol-eme-hab',
+      name: 'VoluntarioEmeHabilidad',
+      component: () => import('../views/VoluntarioEmeHabilidad')
     }
 ]
 

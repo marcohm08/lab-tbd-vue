@@ -1,0 +1,62 @@
+<template>
+    <div class=" container mt-5">
+        <h2 class="mb-3">Busqueda de voluntario según emergencia y/o habilidad</h2>
+        <div class="row mx-5 my-3">
+            <input type="text" placeholder="Ingrese nombre de la emergencia" class="form-control mx-3" style="width: 50%" v-model="nombreEmergencia">
+            <input type="text" placeholder="Ingrese nombre de la habilidad" class="form-control mx-3" style="width: 50%" v-model="idHabilidad">
+            <button class="btn btn-primary" @click="obtenerVoluntarios(nombreEmergencia, idHabilidad)">Buscar</button>
+        </div>
+        <div v-if="voluntarios.length !== 0">
+            <table class="table table-fixed">
+                <thead>
+                <tr>
+                    <th class="col-xs-3">Nombre</th>
+                    <th class="col-xs-3">Last Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(voluntario,index) in voluntarios" :key="index">
+                    <td class="col-xs-3">{{voluntario.id}}</td>
+                    <td class="col-xs-3">{{voluntario.nombre}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+
+<script>
+
+
+    export default {
+        name: 'voluntario-habilidad',
+        data(){
+            return {
+                nombreEmergencia: '',
+                idHabilidad: '',
+                voluntarios: []
+            }
+        },
+        methods:{
+            obtenerVoluntarios(nombre, id){
+                if(nombre !== '' && id === ''){
+                    this.$http.get("/voluntario/nombre-emergencia/"+nombre).then(response => {
+                        this.voluntarios = response.data
+                    }).catch(error => {console.log(error.message)})
+                }
+                else if(nombre === '' & id !== ''){
+                    this.$http.get("/voluntario/habilidad/"+id).then(response => {
+                        this.voluntarios = response.data
+                    }).catch(error => {console.log(error.message)})
+                }
+                else{
+                    this.$http.get("/voluntario/emergencia/"+nombre+"/habilidad/"+id).then(response => {
+                        this.voluntarios = response.data
+                    }).catch(error => {console.log(error.message)})
+                }
+            }
+        }
+
+
+    }
+</script>
