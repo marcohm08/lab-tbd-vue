@@ -50,6 +50,15 @@ header{
     text-align: center;
 }
 
+.header-links{
+    position: absolute;
+    width: 1140px;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
 .logo *{
     float: left;
     text-decoration: none;

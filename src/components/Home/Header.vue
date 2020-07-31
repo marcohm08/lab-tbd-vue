@@ -1,7 +1,7 @@
 <template>
 <header>
-  <nav >
-    <div class="row-custom pt-2">
+  <nav>
+    <div class="row-custom header-links">
       <div class="logo">
           <router-link to="/">Servicio Voluntarios</router-link>
       </div>
@@ -20,7 +20,7 @@
         </li>
         <li >
           <a class="btn-custom btn-full">
-            <router-link to="/">Voluntarios</router-link>
+            <router-link to="/vol-eme-hab">Voluntarios</router-link>
           </a>
         </li>
       </ul>
