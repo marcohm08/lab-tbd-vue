@@ -35,6 +35,11 @@ h1{
     word-spacing: 2px;
 }
 
+h3{
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
 .titulo:after{
     display: block;
     height: 2px;
@@ -62,6 +67,11 @@ h1{
     transition: background-color 0.2s;
 }
 
+.btn-success{
+    color: #fff !important;
+    background-color: #27ae60;
+}
+
 /*ICONOS*/
 
 .icon-container {
@@ -73,7 +83,7 @@ h1{
     font-size: 500%;
     display: block;
     left: 50%;
-    color: #1e8449;
+    color: #27ae60;
     margin-bottom: 10px;
 }
 
@@ -150,4 +160,8 @@ header{
 }
 
 
+/*FEATURES*/
 
+.features h3{
+    text-align: center;
+}
