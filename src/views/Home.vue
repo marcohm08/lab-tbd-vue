@@ -1,20 +1,36 @@
 <template>
 <div class=" container mt-5">
-  <h1>
-    Bienvenidos
+  <h1 class="titulo">
+    ¿Te gustaria ayudar en emergencias cerca de tu zona?
   </h1>
-  <p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus a dolores optio, dolorem architecto natus ullam aliquid exercitationem! Suscipit, voluptate enim nesciunt cumque ipsum eos? Et eaque laudantium molestias. Quaerat?
-  </p>
+  <section class=" features d-flex row justify-content-center">
+    <div class="col-xl-3 col-lg-3 mx-4">
+      <div class="d-flex justify-content-center mb-4">
+        <i class="fas fa-globe-americas icon-big"></i> 
+      </div>
+      <h3>Emergencias de varias regiones</h3>
+      <p>Emergencias en distintas partes del mundo en las que se requiere apoyo</p>
+      <a class="btn btn-success">Ver más</a>
+    </div>
+    <div class="col-xl-3 col-lg-3 mx-4">
+      <div class="d-flex justify-content-center mb-4">
+        <i class="fas fa-users icon-big"></i> 
+      </div>
+      <h3>Voluntarios multidisciplinados</h3>
+      <p>Voluntarios con habilidades distintas dependiendo de las tareas de cada emergencia</p>
+      <a class="btn btn-success">Ver más</a>
+    </div>
+    <div class="col-xl-3 col-lg-3 mx-4">
+      <div class="d-flex justify-content-center mb-4">
+        <i class="fas fa-building icon-big"></i> 
+      </div>
+      <h3>Apoyados por varias instituciones</h3>
+      <p>El despliegue de voluntarios es coordinado y apoyado por distintas instituciones</p>
+      <a class="btn btn-success">Ver más</a>
+    </div>
+    
 
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae fugiat tempora tenetur numquam, perspiciatis reprehenderit maxime quia magni. Ullam non excepturi distinctio quo ex cupiditate ipsa delectus? Fuga, molestiae necessitatibus?
-  </p>
-
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis repellendus officiis, expedita ut, hic magni aliquam excepturi modi aut quaerat possimus aperiam nesciunt a asperiores magnam. At aperiam nesciunt saepe!
-  </p>
-
+  </section>
 </div>
 
 </template>
