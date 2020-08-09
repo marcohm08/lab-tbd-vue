@@ -17,7 +17,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(voluntario,index) in voluntarios" :key="index">
+                <tr v-for="(voluntario,index) in displayedPosts" :key="index">
                     <td class="col-xs-3">{{voluntario.id}}</td>
                     <td class="col-xs-3">{{voluntario.nombre}}</td>
                     <td class="col-xs-3">{{voluntario.fnacimiento}}</td>
@@ -26,9 +26,10 @@
             </table>
             <pagination class="my-3" 
             :current-page="paginaActual" 
-            :pagecount="cuentaPagina"
+            :pageCount="cuentaPagina"
             @nextPage="cambiaPagina('siguiente')"
-            @previusPage="cambiaPagina('anterior')" />
+            @previousPage="cambiaPagina('anterior')"
+            @loadPage="cambiaPagina" />
         </div>
     </div>
 </template>
@@ -46,7 +47,7 @@
             idHabilidad: '',
             voluntarios: [],
             paginaActual: 1,
-            cuentaPagina: 0
+            cuentaPagina: 7
         }
     },
     methods:{
@@ -72,13 +73,46 @@
                 case 'siguiente':
                     this.paginaActual += 1
                     break
-                case 'anterior' :
+                case 'anterior':
                     this.paginaActual -= 1
                     break
                 default:
                     this.paginaActual = valor
             }
+        },
+        paginarVoluntarios(voluntarios){
+          if(voluntarios.length % this.cuentaPagina == 0){
+            let pagina = this.paginaActual
+            let porPagina = voluntarios.length / this.cuentaPagina
+            let desde = (pagina * porPagina) - porPagina
+            let hasta
+            if(pagina * porPagina > voluntarios.length - 1){
+              hasta = voluntarios.length
+            }
+            else {
+              hasta = pagina * porPagina
+            }
+            return voluntarios.slice(desde,hasta)
+          } else {
+            let pagina = this.paginaActual
+            let porPagina = Math.floor(voluntarios.length / (this.cuentaPagina )) + 1
+            let desde = (pagina * porPagina) - porPagina
+            let hasta
+            if(pagina * porPagina > voluntarios.length - 1){
+              hasta = voluntarios.length
+            }
+            else {
+              hasta = pagina * porPagina
+            }
+            return voluntarios.slice(desde,hasta)
+          }
+
         }
+    },
+    computed: {
+      displayedPosts() {
+        return this.paginarVoluntarios(this.voluntarios);
+      }
     },
     created(){
         this.$http.get("/voluntario").then(response => {
