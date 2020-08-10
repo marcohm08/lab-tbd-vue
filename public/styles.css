@@ -87,6 +87,12 @@ h3{
     margin-bottom: 10px;
 }
 
+/*Barra de paginacion*/
+
+.base-pagination__description--current{
+    color: #24a058;
+}
+
 
 /*---------------------------------------------------------------------------------------------------------------------*/
 /*HEADER*/
