@@ -56,9 +56,14 @@ export default {
     paginationTriggers() {
       const currentPage = this.currentPage
       const pageCount = this.pageCount
-      const visiblePagesCount = this.visiblePagesCount
+      let visiblePagesCount
+      if(this.pageCount < 5){
+        visiblePagesCount = this.pageCount
+      } else{
+        visiblePagesCount = 5
+      }
       const visiblePagesThreshold = (visiblePagesCount - 1) / 2
-      const pagintationTriggersArray = Array(this.visiblePagesCount - 1).fill(0)
+      const pagintationTriggersArray = Array(visiblePagesCount - 1).fill(0)
       if (currentPage <= visiblePagesThreshold + 1) {
         pagintationTriggersArray[0] = 1
         const pagintationTriggers = pagintationTriggersArray.map(
@@ -99,6 +104,11 @@ export default {
     },
     onLoadPage(value) {
       this.$emit("loadPage", value)
+    }
+  },
+  watch:{
+    pageCount: function(){
+      this.$forceUpdate()
     }
   }
 }
