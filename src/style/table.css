@@ -1,0 +1,22 @@
+.table {
+  border-collapse: separate;
+  border-color: #212120;
+}
+.table_title {
+  background: #212120;
+  border-radius: 25px;
+  color: #dddddd;
+  th {
+    transition: 0.3s;
+  }
+  th:hover {
+    color: #038e94;
+  }
+}
+.table_childs {
+  background: #dddddd;
+  transition: 0.3s;
+}
+.table_childs:hover {
+  background-color: #b3b5b3;
+}

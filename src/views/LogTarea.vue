@@ -8,7 +8,7 @@
     <div v-if="logTareas.length != 0">
       <table class="table table-fixed">
         <thead>
-          <tr>
+          <tr class="table_title">
             <th class="col-xs-3">ID log</th>
             <th class="col-xs-3">ID tarea</th>
             <th class="col-xs-3">ID estado</th>
@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(logTarea,index) in logTareas" :key="index">
+          <tr class="table_childs" v-for="(logTarea,index) in logTareas" :key="index">
             <td class="col-xs-3">{{logTarea.id}}</td>
             <td class="col-xs-3">{{logTarea.id_tarea}}</td>
             <td class="col-xs-3">{{logTarea.id_estado}}</td>
@@ -30,6 +30,7 @@
 
 <script>
 export default {
+
   name: 'log-tarea',
   data(){
     return {
@@ -54,4 +55,6 @@ export default {
 
 }
 </script>
-
+<style>
+  @import '../style/table.css';
+</style>

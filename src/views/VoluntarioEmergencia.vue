@@ -8,13 +8,13 @@
     <div v-if="voluntarios.length != 0">
       <table class="table table-fixed">
         <thead>
-          <tr>
+          <tr class="table_title">
             <th class="col-xs-3">Nombre</th>
             <th class="col-xs-3">Last Name</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(voluntario,index) in voluntarios" :key="index">
+          <tr class="table_childs" v-for="(voluntario,index) in voluntarios" :key="index">
             <td class="col-xs-3">{{voluntario.id}}</td>
             <td class="col-xs-3">{{voluntario.nombre}}</td>
           </tr>
@@ -49,3 +49,6 @@ export default {
   
 }
 </script>
+<style>
+  @import '../style/table.css';
+</style>
