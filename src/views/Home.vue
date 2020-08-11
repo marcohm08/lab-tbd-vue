@@ -18,7 +18,7 @@
       </div>
       <h3>Voluntarios multidisciplinados</h3>
       <p>Voluntarios con habilidades distintas dependiendo de las tareas de cada emergencia</p>
-      <a class="btn btn-success">Ver más</a>
+      <a class="btn btn-success" @click="$router.push('/vol-eme-hab')">Ver más</a>
     </div>
     <div class="col-xl-3 col-lg-3 mx-4">
       <div class="d-flex justify-content-center mb-4">
@@ -26,7 +26,9 @@
       </div>
       <h3>Apoyados por varias instituciones</h3>
       <p>El despliegue de voluntarios es coordinado y apoyado por distintas instituciones</p>
-      <a class="btn btn-success">Ver más</a>
+      <a class="btn btn-success" @click="$router.push('/about')">
+        Ver más
+      </a>
     </div>
     
 
