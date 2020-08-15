@@ -4,16 +4,11 @@
     Sobre nosotros
   </h1>
   <p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Temporibus a dolores optio, dolorem architecto natus ullam aliquid exercitationem! Suscipit, voluptate enim nesciunt cumque ipsum eos? Et eaque laudantium molestias. Quaerat?
+    Somos una compañia de gestión de catástrofes que busca voluntarios para ciertas emergencias específicas,
+    donde cada uno de los voluntarios ingresará su(s) habilidad(es), según las disponibles, para así asignar
+    tareas que concuerden con sus habilidades.
   </p>
 
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae fugiat tempora tenetur numquam, perspiciatis reprehenderit maxime quia magni. Ullam non excepturi distinctio quo ex cupiditate ipsa delectus? Fuga, molestiae necessitatibus?
-  </p>
-
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis repellendus officiis, expedita ut, hic magni aliquam excepturi modi aut quaerat possimus aperiam nesciunt a asperiores magnam. At aperiam nesciunt saepe!
-  </p>
 
 </div>
 </template>
