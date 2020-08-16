@@ -13,7 +13,7 @@
           </div>
           <div v-if="buscarPor == 'Habilidad'" class="row">
             <input type="text" placeholder="Id habilidad" class="form-control mx-3" style="width: 50%" v-model="idHabilidad">
-            <button class="btn btn-success" @click="obtenerVoluntarios(idHabilidad)">Buscar</button>
+            <button class="btn btn-success" @click="obtenerVoluntariosHabilidad(idHabilidad)">Buscar</button>
           </div>
             <!-- <input type="text" placeholder="Ingrese nombre de la emergencia" class="form-control mx-3" style="width: 50%" v-model="nombreEmergencia">
             <input type="text" placeholder="Ingrese nombre de la habilidad" class="form-control mx-3" style="width: 50%" v-model="idHabilidad">
@@ -88,6 +88,7 @@
           }).catch(error => {console.log(error.message)})
         },
         obtenerVoluntariosHabilidad(id){
+          console.log(id);
           this.$http.get("/voluntario/habilidad/"+id).then(response => {
               this.voluntarios = response.data
           }).catch(error => {console.log(error.message)})
