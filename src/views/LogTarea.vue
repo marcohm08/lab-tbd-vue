@@ -3,7 +3,7 @@
     <h1>TEST</h1>
     <h2 class="mb-3">Log de tareas</h2>
     <div class="row mx-5 my-3">
-      <button class="btn btn-primary" @click="actualizarTarea()">Actualizar tarea aleatoria</button>
+      <button class="btn btn-success" @click="actualizarTarea()">Actualizar tarea aleatoria</button>
     </div>
     <div v-if="logTareas.length != 0">
       <table class="table table-fixed">
