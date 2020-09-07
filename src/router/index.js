@@ -21,6 +21,11 @@ Vue.use(VueRouter)
     component: () => import('../views/VoluntarioEmeHabilidad')
   },
   {
+    path: '/vol-geo',
+    name: 'VoluntarioGeo',
+    component: () => import('../views/Voluntario_geoespacial')
+  },
+  {
     path: '/log-tarea',
     name: 'LogTarea',
     component: () => import('../views/LogTarea')

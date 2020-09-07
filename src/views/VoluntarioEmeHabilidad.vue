@@ -65,23 +65,6 @@
         }
     },
     methods:{
-        obtenerVoluntarios(nombre, id){
-            if(nombre !== '' && id === ''){
-                this.$http.get("/voluntario/nombre-emergencia/"+nombre).then(response => {
-                    this.voluntarios = response.data
-                }).catch(error => {console.log(error.message)})
-            }
-            else if(nombre === '' & id !== ''){
-                this.$http.get("/voluntario/habilidad/"+id).then(response => {
-                    this.voluntarios = response.data
-                }).catch(error => {console.log(error.message)})
-            }
-            else{
-                this.$http.get("/voluntario/emergencia/"+nombre+"/habilidad/"+id).then(response => {
-                    this.voluntarios = response.data
-                }).catch(error => {console.log(error.message)})
-            }
-        },
         obtenerVoluntariosEmergencia(nombre){
           this.$http.get("/voluntario/nombre-emergencia/"+nombre).then(response => {
               this.voluntarios = response.data

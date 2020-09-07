@@ -67,7 +67,7 @@ h3{
     transition: background-color 0.2s;
 }
 
-.btn-successn{
+.btn-success{
     color: #fff !important;
     background-color: #27ae60;
 }
@@ -171,3 +171,9 @@ header{
 .features h3{
     text-align: center;
 }
+
+
+#mapid { 
+    height: 400px; 
+    /* width:200px; */
+  }
