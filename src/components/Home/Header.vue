@@ -28,6 +28,11 @@
             <router-link to="/log-tarea">Tareas</router-link>
           </a>
         </li>
+        <li >
+          <a class="btn-custom btn-full">
+            <router-link to="/vol-geo">Emergencias</router-link>
+          </a>
+        </li>
       </ul>
     <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

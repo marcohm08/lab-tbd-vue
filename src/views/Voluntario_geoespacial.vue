@@ -1,14 +1,37 @@
 <template>
-  <div class="home">
-      <h1>Mapa de Voluntarios</h1>
-      <div>{{point}}
-          <input type="text" v-model="name" placeholder="nombre">
-          <button type="button" @click="createPoint">Crear</button>
-      </div>
+  <div class="container">
+      <h1 class="mt-5">Mapa de Emergencias</h1>
       <div>
           {{message}}
       </div>
-      <div id="mapid"></div>
+      <div class="my-3" id="mapid"></div>
+      <div v-if="voluntaries.length !== 0">
+          <span>Ranking de voluntarios mas cercanos a {{emergencia_actual}}</span>
+            <table class="table table-striped table-bordered table-sm mt-3" cellspacing="0" width="100%">
+                <thead>
+                <tr class="table_title">
+                    <th class="col-xs-3">Ranking</th>
+                    <th class="col-xs-3">Identificador</th>
+                    <th class="col-xs-3">Nombre</th>
+                    <th class="col-xs-3">Apellido</th>
+                    <th class="col-xs-3">latitud</th>
+                    <th class="col-xs-3">longitud</th>
+                    <th class="col-xs-3">Distancia</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table_childs" v-for="(voluntario,index) in voluntaries" :key="index">
+                    <td class="col-xs-3">{{index + 1}}</td>
+                    <td class="col-xs-3">{{voluntario.id}}</td>
+                    <td class="col-xs-3">{{voluntario.nombre}}</td>
+                    <td class="col-xs-3">{{voluntario.apellido}}</td>
+                    <td class="col-xs-3">{{voluntario.latitude}}</td>
+                    <td class="col-xs-3">{{voluntario.longitude}}</td>
+                    <td class="col-xs-3">{{voluntario.distancia}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
   </div>
 </template>
 
@@ -20,6 +43,15 @@ var icon = require('leaflet/dist/images/marker-icon.png')
 var LeafIcon = L.Icon.extend({
     options: {iconSize:[25,41], iconAnchor:[12,41],popupAnchor:[-3,-41]}
 });
+var RedIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [-3,-41],
+  shadowSize: [41, 41]
+});
+
 var myIcon = new LeafIcon({iconUrl: icon});
 
 export default {
@@ -29,8 +61,12 @@ export default {
       longitude: null,
       name: '',
       voluntaries:[],
+      vPoints: [],
+      emergencias:[],
+      points:[],
       message:'',
-      mymap:null
+      mymap:null,
+      emergencia_actual: ''
     }
   },
   computed:{
@@ -46,33 +82,59 @@ export default {
   },
   methods: {
       clearMarkers(){
-          this.points.forEach(p =>{
+          this.voluntaries.forEach(p =>{
               this.mymap.removeLayer(p);
           })
-          this.points = [];
+          this.voluntaries = [];
       },
-      /* async createPoint(){
-          this.message = '';
+      nearVoluntiers(emergencyId){
 
-          let newPoint={
-              name: this.name,
-              latitude: this.latitude,
-              longitude: this.longitude
-          }
+          console.log("hola")
 
-          this.$http.post('/punto',newPoint).then(response =>{
-              let id = response.data.id;
+          this.clearMarkers()
+
+          this.$http.get("/voluntario/dist/"+emergencyId).then(response =>{
+              this.voluntaries = response.data
+              this.voluntaries = this.voluntaries.slice(0,20)
           })
-      } */
 
-      async getVoluntarios(){
-          this.$http.get("/voluntario").then(response => {
-            this.voluntaries = response.data
-            this.voluntaries.forEach(voluntary => {
+          
+      },
 
-                let p = [voluntary.latitude, voluntary.longitude]
+
+      async getEmergencias(){
+          let _this = this
+          this.$http.get("/emergencia").then(response => {
+            this.emergencias = response.data
+            this.emergencias.forEach(emergencia => {
+
+                let p = [emergencia.latitude, emergencia.longitude]
                 let marker = L.marker(p,{icon:myIcon})
-                .bindPopup(voluntary.name)
+                .bindPopup(emergencia.nombre).on('click', function(){
+                    _this.emergencia_actual = emergencia.nombre
+                    _this.vPoints.forEach(p =>{
+                        _this.mymap.removeLayer(p);
+                    })
+                    _this.voluntaries = [];
+                    _this.vPoints = []
+
+                    _this.$http.get("/voluntario/dist/"+emergencia.id).then(response =>{
+                        _this.voluntaries = response.data
+                        _this.voluntaries = _this.voluntaries.slice(0,20)
+                        _this.voluntaries.forEach(voluntario =>{
+
+                            let v = [voluntario.latitude, voluntario.longitude]
+                            let vmarker = L.marker(v,{icon:RedIcon}).bindPopup(voluntario.nombre+' '+voluntario.apellido+': '+voluntario.distancia)
+                            _this.vPoints.push(vmarker)
+
+                            _this.vPoints.forEach(vp =>{
+                                vp.addTo(_this.mymap)
+                            })
+
+                        })
+                    })
+
+                })
 
                 this.points.push(marker)
             });
@@ -96,6 +158,9 @@ export default {
         _this.latitude = e.latlng.lat
         _this.longitude = e.latlng.lng
     });
+
+    _this.getEmergencias()
+
 
 
     /* var marker = L.marker([-51.760928, -72.482996]).addTo(this.mymap);
