@@ -29,6 +29,11 @@ Vue.use(VueRouter)
     path: '/log-tarea',
     name: 'LogTarea',
     component: () => import('../views/LogTarea')
+  },
+  {
+    path: '/vol-habilidad',
+    name: 'VolHabilidad',
+    component: () => import('../views/VoluntarioHabilidad')
   }
 ]
 
