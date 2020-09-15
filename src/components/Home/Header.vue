@@ -18,6 +18,11 @@
             </router-link>
           </a>
         </li>
+        <li>
+          <a class="btn-custom btn-full">
+            <router-link to="/vol-habilidad">Habilidad de voluntario</router-link>
+          </a>
+        </li>
         <li >
           <a class="btn-custom btn-full">
             <router-link to="/vol-eme-hab">Voluntarios</router-link>

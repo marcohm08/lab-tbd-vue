@@ -9,6 +9,7 @@
         <div class="row mx-5 my-3">
             <button class="btn btn-primary" @click="crearVolHabilidad(idHabilidad, idVoluntario)">Crear</button>
         </div>
+        {{ db }}
     </div>
 </template>
 
@@ -17,10 +18,17 @@
 
     export default {
         name: 'Voluntario-Habilidad',
+        data(){
+            return {
+                db: ''
+            }
+        },
         methods:{
             crearVolHabilidad(idHabilidad, idVoluntario){
                 if(idHabilidad != '' && idVoluntario != ''){
-                    this.$http.post("/parallel/vol-habilidad/" + idHabilidad +"/"+ idVoluntario).catch(error => {console.log(error.message)})
+                  this.$http.post("/parallel/vol-habilidad/" + idHabilidad +"/"+ idVoluntario).then(response => {
+                      this.db = "El dato ha sido almacenado en la base de datos "+ response.data
+                  }).catch(error => {console.log(error.message)})
                 }
             }
         }
